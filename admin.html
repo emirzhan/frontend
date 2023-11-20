@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="qwe.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="main.html"><img src="logo.png" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"></button>
+                <ul class="navbar-nav m-auto">
+                    <li><a href="index.html">Game Controllers</a></li>
+                    <li><a href="page1.html">Playstation</a></li>
+                    <li><a href="page2.html">X-box</a></li>
+                    <li><a href="page3.html">Nintendo Switch</a></li>
+                    <li class="nav-item dropdown">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <style>
+        /* Reset some default styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and font family */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-brand img {
+    height: 40px; /* Adjust the height as needed */
+}
+
+.navbar-nav li {
+    margin: 0 10px;
+}
+
+/* Style the main content area */
+body {
+    padding: 20px;
+}
+
+h1 {
+    color: #ff3527; /* Updated color here */
+}
+
+h2 {
+    color: #28a745;
+}
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #ff3527; /* Updated color here */
+    color: #ffffff;
+}
+
+/* Style the forms and buttons */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #ff3527; /* Updated color here */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d63124; /* Slightly darker shade on hover */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar-toggler {
+        margin-top: 10px;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .navbar-nav li {
+        margin: 10px 0;
+    }
+}
+
+    </style>
+</header>
+<body>
+    <h1>Admin Panel</h1>
+    <h2>Users List:</h2>
+    <table id="userList">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Credit Card</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+        <div id="editUserForm" style="display: none;">
+        <h2>Edit User</h2>
+        <form id="editForm">
+            <label for="editEmail">Email:</label>
+            <input type="text" id="editEmail"><br>
+
+            <label for="editCountry">Country:</label>
+            <input type="text" id="editCountry"><br>
+
+            <label for="editCity">City:</label>
+            <input type="text" id="editCity"><br>
+
+            <label for="editCreditCard">Credit Card:</label>
+            <input type="text" id="editCreditCard"><br>
+
+            <label for="editPassword">Password:</label>
+            <input type="password" id="editPassword"><br>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    <div id="addUserForm" style="display: none;">
+        <h2>Add New User</h2>
+        <form id="addForm">
+            <label for="addEmail">Email:</label>
+            <input type="text" id="addEmail"><br>
+
+            <label for="addCountry">Country:</label>
+            <input type="text" id="addCountry"><br>
+
+            <label for="addCity">City:</label>
+            <input type="text" id="addCity"><br>
+
+            <label for="addCreditCard">Credit Card:</label>
+            <input type="text" id="addCreditCard"><br>
+
+            <label for="addPassword">Password:</label>
+            <input type="password" id="addPassword"><br>
+
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+    <button id="addUserButton">Add New User</button>
+    <script>
+        // Function to validate email input in real-time
+    function validateEmail() {
+        const emailInput = document.getElementById("email");
+        const emailValidationMessage = document.getElementById("email-validation-message");
+
+        // Regular expression to validate email
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        // Check if the input matches the email format
+        if (emailRegex.test(emailInput.value)) {
+            emailValidationMessage.textContent = "Valid email address";
+            emailValidationMessage.style.color = "green";
+        } else {
+            emailValidationMessage.textContent = "Invalid email address";
+            emailValidationMessage.style.color = "red";
+        }
+    }
+    
+    // Function to validate country input in real-time
+    function validateCountry() {
+            const countryInput = document.getElementById("country");
+            const countryValidationMessage = document.getElementById("country-validation-message");
+
+            // Regular expression to validate that the input contains only letters and is at least 3 characters long
+            const countryRegex = /^[A-Za-z]{5,}$/;
+
+            if (countryRegex.test(countryInput.value)) {
+                countryValidationMessage.textContent = "Valid country";
+                countryValidationMessage.style.color = "green";
+            } else {
+                countryValidationMessage.textContent = "Invalid country";
+                countryValidationMessage.style.color = "red";
+            }
+        }
+
+        // Function to validate city input in real-time
+        function validateCity() {
+            const cityInput = document.getElementById("city");
+            const cityValidationMessage = document.getElementById("city-validation-message");
+
+            // Regular expression to validate that the input contains only letters and is at least 3 characters long
+            const cityRegex = /^[A-Za-z]{3,}$/;
+
+            if (cityRegex.test(cityInput.value)) {
+                cityValidationMessage.textContent = "Valid city";
+                cityValidationMessage.style.color = "green";
+            } else {
+                cityValidationMessage.textContent = "Invalid city";
+                cityValidationMessage.style.color = "red";
+            }
+        }
+
+        // Function to validate the credit card
+        function validateCreditCard() {
+            const creditCardInput = document.getElementById("creditCard");
+            const creditCardValidationMessage = document.getElementById("creditCard-validation-message");
+
+            // Regular expression to validate credit card (16 digits)
+            const creditCardRegex = /^\d{16}$/;
+
+            // Check if the input matches the credit card format
+            if (creditCardRegex.test(creditCardInput.value)) {
+                creditCardValidationMessage.textContent = "Valid credit card";
+                creditCardValidationMessage.style.color = "green";
+            } else {
+                creditCardValidationMessage.textContent = "Invalid credit card";
+                creditCardValidationMessage.style.color = "red";
+            }
+        }
+
+        // Function to validate the password
+        function validatePassword() {
+            const passwordInput = document.getElementById("password");
+            const passwordValidationMessage = document.getElementById("password-validation-message");
+
+            // Check if the password has at least 8 characters
+            if (passwordInput.value.length >= 8) {
+                passwordValidationMessage.textContent = "Valid password";
+                passwordValidationMessage.style.color = "green";
+            } else {
+                passwordValidationMessage.textContent = "Invalid password (must be at least 8 characters)";
+                passwordValidationMessage.style.color = "red";
+            }
+        }
+        
+        const userList = document.getElementById("userList");
+        const editUserForm = document.getElementById("editUserForm");
+        const addUserForm = document.getElementById("addUserForm");
+        const editForm = document.getElementById("editForm");
+        const addForm = document.getElementById("addForm");
+        const addUserButton = document.getElementById("addUserButton");
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        function displayUsers() {
+            const userList = document.getElementById("userList").getElementsByTagName('tbody')[0];
+            userList.innerHTML = "";
+
+            for (let i = 0; i < users.length; i++) {
+                const row = userList.insertRow();
+
+                const emailCell = row.insertCell(0);
+                const countryCell = row.insertCell(1);
+                const cityCell = row.insertCell(2);
+                const creditCardCell = row.insertCell(3);
+                const passwordCell = row.insertCell(4);
+                const editCell = row.insertCell(5);
+                const deleteCell = row.insertCell(6);
+
+                emailCell.textContent = users[i].email;
+                countryCell.textContent = users[i].country;
+                cityCell.textContent = users[i].city;
+                creditCardCell.textContent = users[i].creditCard;
+                passwordCell.textContent = users[i].password;
+
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.addEventListener("click", () => editUser(i));
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", () => deleteUser(i));
+
+                editCell.appendChild(editButton);
+                deleteCell.appendChild(deleteButton);
+            }
+        }
+
+        displayUsers();
+
+        function editUser(index) {
+            const user = users[index];
+            document.getElementById("editEmail").value = user.email;
+            document.getElementById("editCountry").value = user.country;
+            document.getElementById("editCity").value = user.city;
+            document.getElementById("editCreditCard").value = user.creditCard;
+            document.getElementById("editPassword").value = user.password;
+
+            editUserForm.style.display = "block";
+            addUserForm.style.display = "none";
+
+            editForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Update the user's information
+                user.email = document.getElementById("editEmail").value;
+                user.country = document.getElementById("editCountry").value;
+                user.city = document.getElementById("editCity").value;
+                user.creditCard = document.getElementById("editCreditCard").value;
+                user.password = document.getElementById("editPassword").value;
+
+                localStorage.setItem("users", JSON.stringify(users));
+                displayUsers();
+
+                editUserForm.style.display = "none";
+                editForm.reset();
+            });
+        }
+
+        function deleteUser(index) {
+            users.splice(index, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            displayUsers();
+        }
+
+        addUserButton.addEventListener("click", () => {
+            editUserForm.style.display = "none";
+            addUserForm.style.display = "block";
+        });
+
+        addForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const newUser = {
+                email: document.getElementById("addEmail").value,
+                country: document.getElementById("addCountry").value,
+                city: document.getElementById("addCity").value,
+                creditCard: document.getElementById("addCreditCard").value,
+                password: document.getElementById("addPassword").value,
+            };
+
+            users.push(newUser);
+            localStorage.setItem("users", JSON.stringify(users));
+            displayUsers();
+
+            addUserForm.style.display = "none";
+            addForm.reset();
+        });
+
+        displayUsers();
+
+        
+    </script>
+</body>
+</html>

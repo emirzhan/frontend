@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Controllers Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="main.html"><img src="logo.png" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav m-auto">
+                        <li><a href="index.html">Game Controllers</a></li>
+                        <li><a href="page1.html">Playstation</a></li>
+                        <li><a href="page2.html">X-box</a></li>
+                        <li><a href="page3.html">Nintendo Switch</a></li>
+                        <li class="nav-item dropdown">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container justify-content-center">
+            <div><h2>Free delivery if you order before the end of the promotion</h2></div>
+            <div id="timer"></div>
+        </div>
+
+        <!-- Product 1 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>PS4 V2<br>Dualshock4</h2>
+                        <h3>Wireless Controller for PS4</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$50.99</h4>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary add-to-cart col-6" data-id="ps4">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="colls col-6">
+                    <img src="controller.png" class="controller">
+                    <div class="colorbox"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>PS5 <br>Dualshock4</h2>
+                        <h3>Wireless Controller for PS5</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$100.99</h4>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary add-to-cart col-6" data-id="ps5">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="colls col-6">
+                    <img src="ps5-controller.png" class="controller">
+                    <div class="colorbox"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>X Box<br>Dualshock4</h2>
+                        <h3>Wireless Controller for X Box</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$50.99</h4>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary add-to-cart col-6" data-id="xbox">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="colls col-6">
+                    <img src="xbox-controller.png" class="controller">
+                    <div class="colorbox"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>Nintendo Switch<br>Dualshock4</h2>
+                        <h3>Wireless Controller for Nintendo Switch</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$32.99</h4>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary add-to-cart col-6" data-id="switch">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 colls">
+                    <img src="switch-controller.png" class="controller">
+                    <div class="colorbox"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="cart-content"></div>
+            <button id="clear-cart" class="btn btn-danger mt-3">Clear Cart</button>
+            <a href="pageq.html"><button class="btn btn-success mt-3" id="buy-btn">Buy</button></a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/"><img src="fb.png"></a>
+            <a href="https://twitter.com/?lang=ru"><img src="tw.png"></a>
+            <a href="https://www.instagram.com/"><img src="ig.png"></a>
+        </div>
+    </div>
+
+    <script>
+        function updateTimer() {
+            var endDate = new Date("2023-11-16 00:00:00");
+            var now = new Date();
+
+            var timeRemaining = endDate - now;
+            if (timeRemaining <= 0) {
+                document.getElementById("timer").innerHTML = "The promotion has ended";
+            } else {
+                var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").innerHTML = "Timer: " + days + " days, " + hours + " hours, " + minutes +
+                    " minutes, " + seconds + " seconds";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+
+        let cart = {
+            'ps4': {
+                "name": "PS4",
+                "count": 0,
+                "price": 50.99,
+            },
+            'ps5': {
+                "name": "PS5",
+                "count": 0,
+                "price": 100.99,
+            },
+            'xbox': {
+                "name": "X Box",
+                "count": 0,
+                "price": 50.99,
+            },
+            'switch': {
+                "name": "Nintendo Switch",
+                "count": 0,
+                "price": 32.99,
+            },
+        };
+
+        document.onclick = event => {
+            if (event.target.classList.contains('add-to-cart')) {
+                addToCart(event.target.dataset.id);
+            }
+            if (event.target.id === 'clear-cart') {
+                clearCart();
+            }
+            if (event.target.id === 'buy-btn') {
+                buyProducts();
+            }
+        }
+
+        const addToCart = id => {
+            if (!cart[id]) {
+                cart[id] = {
+                    "name": "New Product",
+                    "count": 0,
+                    "price": 0.0,
+                };
+            }
+            cart[id]['count']++;
+            renderCart();
+        }
+
+        const clearCart = () => {
+            cart = {};
+            renderCart();
+        }
+
+        const renderCart = () => {
+            const cartContent = document.getElementById('cart-content');
+            cartContent.innerHTML = '';
+
+            let totalCost = 0;
+
+            for (const productId in cart) {
+                if (cart.hasOwnProperty(productId) && cart[productId]['count'] > 0) {
+                    const product = cart[productId];
+                    const productContainer = document.createElement('div');
+                    productContainer.textContent = `${product.name} - Quantity: ${product.count} - Price: ${
+                        product.count * product.price
+                    }`;
+                    cartContent.appendChild(productContainer);
+
+                    totalCost += product.count * product.price;
+                }
+            }
+
+            const totalContainer = document.createElement('div');
+            totalContainer.textContent = `Total Cost: ${totalCost}`;
+            cartContent.appendChild(totalContainer);
+        }
+
+        const buyProducts = () => {
+            const totalProducts = Object.values(cart).reduce((total, product) => total + product.count, 0);
+            const isUserLoggedIn = true; // Replace with your actual logic for checking user login status
+
+            if (totalProducts > 0 && isUserLoggedIn) {
+                alert('Thanks for the purchase');
+                // Add logic to handle the purchase
+            } else if (!isUserLoggedIn) {
+                alert('You are not logged in.');
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

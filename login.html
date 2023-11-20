@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="main.html"><img src="logo.png" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"></button>
+                <ul class="navbar-nav m-auto">
+                    <li><a href="index.html">Game Controllers</a></li>
+                    <li><a href="page1.html">Playstation</a></li>
+                    <li><a href="page2.html">X-box</a></li>
+                    <li><a href="page3.html">Nintendo Switch</a></li>
+                    <li class="nav-item dropdown">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <style>
+        /* Reset some default styles */
+body, h1, h5, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.navbar-nav a:hover {
+    color: #0056b3;
+}
+
+#loginForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar-nav li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* "Sign up" link styles */
+h5 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+h5 a {
+    color: #0074cc;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+h5 a:hover {
+    color: #0056b3;
+}
+
+    </style>
+</header>
+<body>
+    <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input type="text" id="loginEmail" required><br>
+
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required><br>
+
+        <button type="submit">Log In</button>
+    </form>
+    <div class="container">
+        <h5>or you do not have an account: <a href="pageq.html">Sign up</a></h5>
+        
+    </div>
+</div>
+
+<script>
+    const loginForm = document.getElementById("loginForm");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const loginEmail = document.getElementById("loginEmail").value;
+        const loginPassword = document.getElementById("loginPassword").value;
+
+        // Check if the entered credentials are admin and qwer
+        if (loginEmail === "admin" && loginPassword === "qwer") {
+            // Redirect to another page (replace "redirect.html" with the desired page)
+            window.location.href = "admin.html";
+            return;
+        }
+
+        const user = users.find((user) => user.email === loginEmail && user.password === loginPassword);
+
+        if (user) {
+            alert("Login successful!");
+        } else {
+            alert("Invalid email or password. Please try again.");
+            loginForm.reset();
+        }
+    });
+</script>
+
+</body>
+</html>
