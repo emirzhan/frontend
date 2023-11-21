@@ -118,7 +118,7 @@ h5 a:hover {
         <label for="loginPassword">Password:</label>
         <input type="password" id="loginPassword" required><br>
 
-        <button type="submit">Log In</button>
+        <button type="submit" id="loginSubmit">Log In</button>
     </form>
     <div class="container">
         <h5>or you do not have an account: <a href="pageq.html">Sign up</a></h5>
@@ -126,6 +126,7 @@ h5 a:hover {
     </div>
 </div>
 
+<!-- Update the script at the bottom of the body in login.html -->
 <script>
     const loginForm = document.getElementById("loginForm");
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -138,7 +139,7 @@ h5 a:hover {
 
         // Check if the entered credentials are admin and qwer
         if (loginEmail === "admin" && loginPassword === "qwer") {
-            // Redirect to another page (replace "redirect.html" with the desired page)
+            // Redirect to admin.html for admin user
             window.location.href = "admin.html";
             return;
         }
@@ -146,13 +147,17 @@ h5 a:hover {
         const user = users.find((user) => user.email === loginEmail && user.password === loginPassword);
 
         if (user) {
-            alert("Login successful!");
+            // Store the user's email in localStorage
+            localStorage.setItem("loggedInUserEmail", loginEmail);
+            // Redirect to index.html
+            window.location.href = "index.html";
         } else {
             alert("Invalid email or password. Please try again.");
             loginForm.reset();
         }
     });
 </script>
+
 
 </body>
 </html>
