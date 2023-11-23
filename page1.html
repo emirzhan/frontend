@@ -24,6 +24,7 @@
                     <li class="nav-item dropdown">
                     </li>
                 </ul>
+                <button id="loginButton" class="btn btn-primary">Login</button>
             </div>
         </div>
     </nav>
@@ -79,6 +80,28 @@
         </div>
     </div>
     <script>
+    // Function to get the logged-in user's email from localStorage
+    function getLoggedInUserEmail() {
+        return localStorage.getItem("loggedInUserEmail") || null;
+    }
+
+    // Function to update the login button text
+    function updateLoginButtonText() {
+        const loggedInUserEmail = getLoggedInUserEmail();
+        const loginButton = document.getElementById("loginButton");
+
+        if (loginButton && loggedInUserEmail) {
+            loginButton.textContent = loggedInUserEmail === "admin" ? "Admin" : loggedInUserEmail;
+        }
+    }
+
+    // Call the function to update the login button text when the page loads
+    window.onload = updateLoginButtonText;
+    
+        document.getElementById("loginButton").addEventListener("click", function () {
+        window.location.href = "login.html";
+        });
+
         function updateTimer() {
                 var endDate = new Date("2023-11-29 00:00:00");
                 var now = new Date();
