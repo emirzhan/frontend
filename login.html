@@ -128,7 +128,7 @@ h5 a:hover {
 
 <!-- Update the script at the bottom of the body in login.html -->
 <script>
-    const loginForm = document.getElementById("loginForm");
+const loginForm = document.getElementById("loginForm");
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
     loginForm.addEventListener("submit", function (event) {
@@ -147,8 +147,9 @@ h5 a:hover {
         const user = users.find((user) => user.email === loginEmail && user.password === loginPassword);
 
         if (user) {
-            // Store the user's email in localStorage
-            localStorage.setItem("loggedInUserEmail", loginEmail);
+            // Store user email in localStorage
+            localStorage.setItem("loggedInUser", loginEmail);
+
             // Redirect to index.html
             window.location.href = "index.html";
         } else {
@@ -156,8 +157,22 @@ h5 a:hover {
             loginForm.reset();
         }
     });
-</script>
 
+    // Add a logout button if the user is logged in
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+        const logoutButton = document.createElement("button");
+        logoutButton.textContent = "Logout";
+        logoutButton.addEventListener("click", function () {
+            // Clear the stored user email and reload the page
+            localStorage.removeItem("loggedInUser");
+            window.location.reload();
+        });
+
+        document.body.appendChild(logoutButton);
+    }
+</script>
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game Controllers Shop</title>
     <link rel="stylesheet" href="index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="main.html"><img src="logo.png" class="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"></button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false"></button>
                 <ul class="navbar-nav m-auto">
                     <li><a href="index.html">Game Controllers</a></li>
                     <li><a href="page1.html">Playstation</a></li>
@@ -30,23 +35,32 @@
         </div>
     </nav>
 </header>
+
 <body>
     <div class="container justify-content-center">
-        <div ><h2>Доставка бесплатная если успееете заказать до оканчание акции</h2></div>
+        <div><h2>Free delivery if you order before the end of the promotion</h2></div>
         <div id="timer"></div>
-        
+
     </div>
+    <div id="cart-content" class="container justify-content-center"></div>
+    <div class="container justify-content-center">
+    <button id="clear-cart">Clear Cart</button>
+    <button id="buy-button" disabled>Buy</button> <!-- Disable initially -->
+    </div></div>
     <div class="container">
+        <!-- Product 1 -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6"><div class="colla">
-                    <h2>PS4 V2<br>Dualshock4</h2>
-                    <h3>Wireless Contreller for PS4</h3>
-                    <p>(Compatible/Generic)</p>
-                    <h4>$50.99</h4></div>
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>PS4 V2<br>Dualshock4</h2>
+                        <h3>Wireless Controller for PS4</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$50.99</h4>
+                    </div>
                     <div class="row">
-                        <button type="button" class="button-primary plus col-6" data-id="qaz">+</button>
-                        <button type="button" class="button-primary minus col-6" data-id="qaz">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button type="button" class="button-primary add-to-cart col-12" data-id="ps4-controller">Add to Cart</button>
                     </div>
                 </div>
                 <div class="colls col-6">
@@ -58,17 +72,21 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
+
+        <!-- Product 2 -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6"><div class="colla">
-                    <h2>PS5 <br>Dualshock4</h2>
-                    <h3>Wireless Contreller for PS5</h3>
-                    <p>(Compatible/Generic)</p>
-                    <h4>$100.99</h4></div>
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>PS5<br>Controller</h2>
+                        <h3>Wireless Controller for PS5</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$55.99</h4>
+                    </div>
                     <div class="row">
-                        <button type="button" class="button-primary plus col-6" data-id="wsx">+</button>
-                        <button type="button" class="button-primary minus col-6" data-id="wsx">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button type="button" class="button-primary add-to-cart col-12" data-id="xbox-one-controller">Add to Cart</button>
                     </div>
                 </div>
                 <div class="colls col-6">
@@ -81,20 +99,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Product 3 -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6"><div class="colla">
-                    <h2>X Box<br>Dualshock4</h2>
-                    <h3>Wireless Contreller for X Box</h3>
-                    <p>(Compatible/Generic)</p>
-                    <h4>$50.99</h4></div>
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>Xbox One<br>Controller</h2>
+                        <h3>Wireless Controller for Xbox One</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$49.99</h4>
+                    </div>
                     <div class="row">
-                    <button type="button" class="button-primary plus col-6" data-id="edc">+</button>
-                    <button type="button" class="button-primary minus col-6" data-id="edc">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button type="button" class="button-primary add-to-cart col-12" data-id="switch-controller">Add to Cart</button>
                     </div>
                 </div>
                 <div class="colls col-6">
-                    <img src="[removal.ai]_590eeb0c-7d64-4c9e-87a3-8c54472af2bf-115-1159671_xbox-1-png-xbox-one-500gb-console-transparent.png" class="controller">
+                    <img src="[removal.ai]_590eeb0c-7d64-4c9e-87a3-8c54472af2bf-115-1159671_xbox-1-png-xbox-one-500gb-console-transparent.png" class="controller" class="controller">
                     <div class="colorbox"></div>
                     <div class="addbtn">
                         <img src="add.png">
@@ -103,19 +125,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Product 4 -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6"><div class="colla">
-                    <h2>Nintendo Switch<br>
-                    <h3>Wireless Contreller</h3>
-                    <p>(Compatible/Generic)</p>
-                    <h4>$32.99</h4></div>
+                <div class="col-lg-6">
+                    <div class="colla">
+                        <h2>Nintendo Switch<br>Pro Controller</h2>
+                        <h3>Wireless Controller for Nintendo Switch</h3>
+                        <p>(Compatible/Generic)</p>
+                        <h4>$39.99</h4>
+                    </div>
                     <div class="row">
-                    <button type="button" class="button-primary plus col-6" data-id="rfv">+</button>
-                    <button type="button" class="button-primary minus col-6" data-id="rfv">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button type="button" class="button-primary add-to-cart col-12" data-id="ps-move-controller">Add to Cart</button>
                     </div>
                 </div>
-                <div class="col-6 colls">
+                <div class="colls col-6">
                     <img src="[removal.ai]_270a5c7b-ef72-41e7-9f18-cbc96c18b27f-img_0_68_225_0_1.png" class="controller">
                     <div class="colorbox"></div>
                     <div class="addbtn">
@@ -124,62 +150,19 @@
                     </div>
                 </div>
             </div>
-            <div id="cart-content"></div>    
-            <button id="clear-cart">Clear Cart</button>
-            <a href="pageq.html"><button>Order</button></a>
-
         </div>
+
         <div class="social-links">
-           <a href="https://www.facebook.com/"><img src="fb.png"></a> 
-            <a href="https://twitter.com/?lang=ru"><img src="tw.png"></a> 
-            <a href="https://www.instagram.com/"><img src="ig.png"></a> 
+            <a href="https://www.facebook.com/"><img src="fb.png"></a>
+            <a href="https://twitter.com/?lang=ru"><img src="tw.png"></a>
+            <a href="https://www.instagram.com/"><img src="ig.png"></a>
         </div>
     </div>
-    <script>
-            // Function to get the logged-in user's email from localStorage
-    function getLoggedInUserEmail() {
-        return localStorage.getItem("loggedInUserEmail") || null;
-    }
 
-    // Function to update the login button text
-    function updateLoginButtonText() {
-        const loggedInUserEmail = getLoggedInUserEmail();
-        const loginButton = document.getElementById("loginButton");
-
-        if (loginButton && loggedInUserEmail) {
-            loginButton.textContent = loggedInUserEmail === "admin" ? "Admin" : loggedInUserEmail;
-        }
-    }
-
-    // Call the function to update the login button text when the page loads
-    window.onload = updateLoginButtonText;
-    
-        document.getElementById("loginButton").addEventListener("click", function () {
-        window.location.href = "login.html";
-        });
-
-    function updateTimer() {
-            var endDate = new Date("2023-11-16 00:00:00");
-            var now = new Date();
-
-            var timeRemaining = endDate - now;
-            if (timeRemaining <= 0) {
-                document.getElementById("timer").innerHTML = "Акция закончилась";
-            } else {
-                var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                document.getElementById("timer").innerHTML = "Таймер: " + days + " дней, " + hours + " часов, " + minutes + " минут, " + seconds + " секунд";
-            }
-        }
-
-        setInterval(updateTimer, 1000);
-        
-
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
